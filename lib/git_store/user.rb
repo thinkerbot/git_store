@@ -12,8 +12,8 @@ class GitStore
     end
 
     def self.from_config
-      name = IO.popen("git config user.name")  { |io| io.gets.chomp }
-      email = IO.popen("git config user.email") { |io| io.gets.chomp }
+      name = IO.popen("git config user.name")  { |io| io.gets.to_s.chomp }
+      email = IO.popen("git config user.email") { |io| io.gets.to_s.chomp }
 
       new name, email, Time.now
     end
